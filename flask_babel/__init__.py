@@ -117,7 +117,12 @@ class Babel(object):
                 lambda s, p, n: get_translations().ungettext(s, p, n),
                 newstyle=True
             )
-
+            
+    def setlanguage(self,locale):
+        babel = Babel(self, app=None, default_locale='en', default_timezone='UTC',
+                 date_formats=None, configure_jinja=True)
+        return babel
+        
     def localeselector(self, f):
         """Registers a callback function for locale selection.  The default
         behaves as if a function was registered that returns `None` all the
